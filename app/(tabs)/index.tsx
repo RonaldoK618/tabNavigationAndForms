@@ -1,9 +1,11 @@
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import { Alert, Button, StyleSheet, TextInput } from 'react-native';
 
-export default function SignInScreen({ navigation }: { navigation: any }) {
+export default function SignInScreen() {
+    const navigation = useNavigation();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -22,7 +24,10 @@ export default function SignInScreen({ navigation }: { navigation: any }) {
     return;
     }
     Alert.alert('Success', 'You are signed in!', [
-    { text: 'Go to Home'},
+    { 
+        text: 'Go to Home',
+        onPress: () => navigation.navigate('homeScreen')
+    },
     ]);
 };
 
